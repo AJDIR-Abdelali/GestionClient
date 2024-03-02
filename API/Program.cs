@@ -1,4 +1,9 @@
 
+using API.Repository;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+
 namespace API
 {
     public class Program
@@ -10,9 +15,17 @@ namespace API
             // Add services to the container.
             builder.Services.AddAuthorization();
 
+
+            builder.Services.AddDbContext<MyDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+               );
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+         
+
 
             var app = builder.Build();
 
