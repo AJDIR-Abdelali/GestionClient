@@ -1,8 +1,9 @@
 
 using API.Repository;
+using API.Service;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
+
+
 
 namespace API
 {
@@ -19,6 +20,9 @@ namespace API
             builder.Services.AddDbContext<MyDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
                );
+
+            builder.Services.AddScoped<IClientService, ClientService>();
+            builder.Services.AddTransient<IClientRepos, ClientRepos>();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

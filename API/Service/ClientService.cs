@@ -4,7 +4,7 @@ using API.Repository;
 
 namespace API.Service
 {
-    public class ClientService
+    public class ClientService : IClientService
     {
         public ClientRepos _clientRepos;
 
@@ -40,6 +40,21 @@ namespace API.Service
         public bool delete(int id)
         {
             return true;
+        }
+
+        public int ajouter(ClientPutDto entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Update(ClientPostDto entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }
